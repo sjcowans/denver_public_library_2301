@@ -54,5 +54,21 @@ RSpec.describe Library do
 
     expect(library.books).to eq([villette, code_like_a_pro])
     end
+
+    it 'can put publication timeframe' do
+    library = Library.new("Seanbrary")
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+    villette = charlotte_bronte.write("Villette", "1853")
+    why_planes_fly = charlotte_bronte.write("Why Planes Fly", "1854")
+    up = charlotte_bronte.write("Up", "1955")
+    sean_cowans = Author.new({first_name: "Sean", last_name: "Cowans"})
+    code_like_a_pro = sean_cowans.write("Code Like a Pro", "2023")
+    why_tho = sean_cowans.write("Why tho?", "2022")
+    surviving_covid = sean_cowans.write("Survivnfg Covid", "2021")
+    library.add_author(charlotte_bronte)
+    library.add_author(sean_cowans)
+
+    expect(library.publication_time_frame_for(sean_cowans)).to eq({:end=>"2023", :start=>"2021"})
+    end
   end
 end
