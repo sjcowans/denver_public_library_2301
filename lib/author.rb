@@ -1,12 +1,14 @@
 class Author
 attr_reader :books,
             :first, 
-            :last
+            :last,
+            :book_years
 
   def initialize(information)
     @first = information[:first_name]
     @last = information[:last_name]
     @books = []
+    @book_years = []
   end
 
   def name
@@ -20,6 +22,8 @@ attr_reader :books,
     data[:title] = name
     data[:publication_date] = date
     book = Book.new(data)
+    @book_years << book.publication_year
+    @book_years.sort!
     @books << book
     book
   end
