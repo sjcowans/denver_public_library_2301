@@ -105,8 +105,9 @@ RSpec.describe Library do
     library.checkout(why_tho)
     library.checkout(surviving_covid)
     library.return(why_tho)
-    
-    expect(library.return(why_tho)).to eq([])
+
+    expect(library.checked_out_books).to eq([surviving_covid])
+    expect(library.return(surviving_covid)).to eq([])
     end
 
     it 'can show most checked out book' do

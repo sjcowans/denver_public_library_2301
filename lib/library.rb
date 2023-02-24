@@ -1,7 +1,8 @@
 class Library
 attr_reader :name,
             :authors,
-            :books
+            :books,
+            :checked_out_books
 
   def initialize(name)
     @name = name
@@ -32,9 +33,10 @@ attr_reader :name,
   def return(book)
     @books << book
     @checked_out_books.delete(book)
-    if @checked_out_book == nil
+    if @checked_out_books == nil
       @checked_out_books = []
     end
+    @checked_out_books
   end
 
   def most_checked_out
