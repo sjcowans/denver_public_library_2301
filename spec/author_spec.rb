@@ -1,5 +1,3 @@
-
-The `write` method must take two Strings as arguments and return an instance of `Book`.
 require 'rspec'
 require './lib/book'
 require './lib/author'
@@ -9,7 +7,7 @@ RSpec.describe Author do
     it 'can initialize' do
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
 
-    expect(author).to be_a(Author)
+    expect(charlotte_bronte).to be_a(Author)
     end
   end
 
@@ -39,8 +37,8 @@ RSpec.describe Author do
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
 
-    expect(jane_eyre.class).to be_a(Book)
-    expect(jane_eyre).title.to eq("Jane Eyre")
+    expect(jane_eyre.class).to eq(Book)
+    expect(jane_eyre.title).to eq("Jane Eyre")
     end
 
     it 'can write multiple books' do
